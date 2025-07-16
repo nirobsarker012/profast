@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+@plugin "daisyui";
+
+.urban {
+  font-family: "Urbanist", sans-serif;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  width: calc(100% - 24px);
+  max-width: 1360px;
+  margin-inline: auto;
+}
