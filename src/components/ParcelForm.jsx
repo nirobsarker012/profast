@@ -120,13 +120,24 @@ const ParcelForm = () => {
           delivery_status: "not_collected",
           trackingId: generateTrackingId(),
         };
-        console.log("Saving to DB:", parcelData);
-        Swal.fire("Success!", "Parcel booked successfully.", "success");
+
+        //save the data in server
+        axiosSecure
+          .post("parcels", parcelData)
+          .then((res) => {
+            // TODO : redirect the payment Page
+            console.log("Saved to DB:", res.data);
+            if (res.data.insertedId) {
+              Swal.fire("Success!", "Parcel booked successfully.", "success");
+            }
+          })
+          .catch((error) => {
+            console.error("Error saving parcel:", error);
+            Swal.fire("Error!", "Failed to book parcel.", "error");
+          });
       }
     });
   };
-
-  // save data to the server
 
   return (
     <div className="container mx-auto p-4 inter text-[#03373D]">
@@ -208,6 +219,7 @@ const ParcelForm = () => {
               </label>
               <input
                 type="text"
+                defaultValue={user.displayName}
                 {...register("senderName", { required: true })}
                 className="input input-bordered w-full"
                 placeholder="Sender Name"
