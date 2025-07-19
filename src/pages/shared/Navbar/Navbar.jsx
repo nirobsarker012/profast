@@ -16,10 +16,13 @@ const Navbar = () => {
       <li>
         <NavLink to={"/about"}>About Us</NavLink>
       </li>
-
-      <li>
-        <NavLink to={"/parcelForm"}>Pricing</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to={"/dashboard"}>Dash Board</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
