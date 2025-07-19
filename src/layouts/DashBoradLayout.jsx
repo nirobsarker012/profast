@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
+import ProfastLogo from "../pages/shared/ProfastLogo/ProfastLogo";
 
 const DashBoradLayout = () => {
   return (
@@ -46,11 +47,12 @@ const DashBoradLayout = () => {
         ></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
+          <ProfastLogo />
           <li>
-            <a>Sidebar Item 1</a>
+            <a>Home</a>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <NavLink to={"/dashboard/myParcels"}>My Parcels</NavLink>
           </li>
         </ul>
       </div>

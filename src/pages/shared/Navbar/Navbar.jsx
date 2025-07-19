@@ -4,7 +4,13 @@ import ProfastLogo from "../ProfastLogo/ProfastLogo";
 import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+  // Handle Logout
+  const handleLogout = () => {
+    logOut()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   const navItems = (
     <>
       <li>
@@ -59,9 +65,15 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"} className="btn bnt-primary text-black">
-          Login
-        </Link>
+        {user ? (
+          <Link onClick={handleLogout} className="btn bnt-primary text-black">
+            Logout
+          </Link>
+        ) : (
+          <Link to={"/login"} className="btn bnt-primary text-black">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
