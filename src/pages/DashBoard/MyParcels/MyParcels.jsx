@@ -43,15 +43,9 @@ const MyParcels = () => {
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Yes, pay now!",
-    }).then(async (result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
         navigate(`/dashboard/payment/${parcel._id}`);
-        // Fake payment logic - replace with real logic
-        await axiosSecure.patch(`/parcels/pay/${parcel._id}`, {
-          payment_status: "paid",
-        });
-        refetch();
-        Swal.fire("Paid!", "Your parcel has been paid.", "success");
       }
     });
   };
@@ -68,7 +62,7 @@ const MyParcels = () => {
     if (confirm.isConfirmed) {
       try {
         axiosSecure.delete(`/parcels/${id}`).then((res) => {
-          if (res.data.deleteCount) {
+          if (res.data.deletedCount) {
             Swal.fire({
               title: "Deleted",
               text: "Percel has been Deleted",
