@@ -9,6 +9,7 @@ import PrivateRoute from "../router/PrivateRoute";
 import ParcelForm from "../components/ParcelForm";
 import DashBoradLayout from "../layouts/DashBoradLayout";
 import MyParcels from "../pages/DashBoard/MyParcels/MyParcels";
+import Payment from "../pages/DashBoard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myParcels",
         Component: MyParcels,
+      },
+      {
+        path: "payment/:id",
+        Component: Payment,
       },
     ],
   },

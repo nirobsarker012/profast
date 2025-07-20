@@ -4,9 +4,11 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const MyParcels = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
   // Fetch parcels of the logged-in user
@@ -43,6 +45,7 @@ const MyParcels = () => {
       confirmButtonText: "Yes, pay now!",
     }).then(async (result) => {
       if (result.isConfirmed) {
+        navigate(`/dashboard/payment/${parcel._id}`);
         // Fake payment logic - replace with real logic
         await axiosSecure.patch(`/parcels/pay/${parcel._id}`, {
           payment_status: "paid",
