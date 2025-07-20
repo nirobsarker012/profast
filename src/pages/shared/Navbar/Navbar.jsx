@@ -20,6 +20,9 @@ const Navbar = () => {
         <NavLink to={"/coverage"}>Coverage</NavLink>
       </li>
       <li>
+        <NavLink to={"/parcelForm"}>Send Parcels</NavLink>
+      </li>
+      <li>
         <NavLink to={"/about"}>About Us</NavLink>
       </li>
       {user && (
